@@ -12,7 +12,8 @@
     "@google/genai": "^1.4.0",
     "leaflet": "1.9.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "rollup": "^4.42.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
