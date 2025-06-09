@@ -54,6 +54,9 @@ If web sources are consulted via the search tool, ensure they are cited through 
 
     // Clean and parse JSON
     try {
+      if (!rawTextResponse) {
+        throw new Error("Received empty or undefined response text from the weather service.");
+      }
       let jsonStr = rawTextResponse.trim();
       // Regex to strip potential markdown fences if the model still adds them
       const fenceRegex = /^```(?:json)?\s*\n?(.*?)\n?\s*```$/s;
@@ -64,7 +67,7 @@ If web sources are consulted via the search tool, ensure they are cited through 
       parsedJsonData = JSON.parse(jsonStr);
     } catch (e) {
       console.error("Failed to parse JSON response:", e, "Raw response text:", rawTextResponse);
-      throw new Error(`Received an invalid JSON response from the weather service. The AI might not have returned valid JSON. Raw response snippet: ${rawTextResponse.substring(0,200)}`);
+      throw new Error(`Received an invalid JSON response from the weather service. The AI might not have returned valid JSON. Raw response snippet: ${rawTextResponse ? rawTextResponse.substring(0,200) : 'undefined'}`);
     }
     
     const weatherDetails: WeatherDetails = {
