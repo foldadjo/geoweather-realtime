@@ -1,0 +1,5 @@
+{
+  "name": "GeoWeather Realtime",
+  "description": "A web application that fetches and displays real-time weather information for specified geographic coordinates using the Google Gemini API. It shows weather conditions and data sources.",
+  "requestFramePermissions": ["geolocation"]
+}

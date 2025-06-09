@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoWeather Realtime</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <style>
+      html {
+        height: 100%; /* Ensure html can be a basis for percentage heights */
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(90deg, #0f172a 0%, #1e3a8a 100%); /* Deep blue gradient */
+        color: #e2e8f0; /* Light text color for body, components will override */
+        margin: 0;
+        display: flex; /* Helps with centering if #root doesn't take full height */
+        flex-direction: column; /* Ensure footer stays at bottom if content is short */
+        min-height: 100%; /* Changed from height: 100% */
+      }
+
+      #root {
+        flex-grow: 1; /* Allow root to grow and push footer down */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+
+      /* Custom Animation for fadeIn effect */
+      @keyframes fadeIn {
+        from { 
+          opacity: 0; 
+          transform: translateY(15px);
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+
+      /* Styles for the .glassmorphic-card class */
+      .glassmorphic-card {
+        background: rgba(30, 41, 59, 0.5); /* Semi-transparent dark slate */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Text color is typically set by Tailwind utilities within the component */
+      }
+
+      /* Fallback for browsers that don't support backdrop-filter */
+      @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+        .glassmorphic-card {
+          background: rgba(30, 41, 59, 0.8); /* More opaque fallback */
+        }
+      }
+
+      /* Leaflet map container style */
+      .leaflet-container {
+        background: #1e293b; /* Dark background for map tiles if they are slow to load */
+        border-radius: 0.375rem; /* Corresponds to rounded-md */
+      }
+      .leaflet-control-attribution a {
+        color: #94a3b8; /* Lighter text for attribution links */
+      }
+      .leaflet-control-attribution {
+        background: rgba(30, 41, 59, 0.6) !important;
+        color: #cbd5e1 !important;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.4.0",
+    "leaflet": "https://esm.sh/leaflet@1.9.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
